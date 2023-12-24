@@ -3,4 +3,6 @@
     <string name="main_screen_title">Home</string>
     <string name="account_top_btn">Account</string>
     <string name="favourites_top_btn">Favourites</string>
+    <string name="add_to_fav">Add to favourites</string>
+    <string name="rm_from_fav">Remove from favourites</string>
 </resources>
