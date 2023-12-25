@@ -8,6 +8,7 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import ru.hse.android.lab3.kurikhin.models.News
 import ru.hse.android.lab3.kurikhin.network.NewsApi
 import java.io.IOException
@@ -21,14 +22,20 @@ sealed interface NewsUiState {
 
 class MainScreenViewModel : ViewModel() {
     
+    init {
+        getNews("football")
+    }
+    
     var newsListState: NewsUiState by mutableStateOf(NewsUiState.Loading)
         private set
     private fun getNews(queryParams: String) {
         viewModelScope.launch {
             newsListState = try {
-                val listResult = NewsApi.retrofitService.getNews(queryParams)
-                NewsUiState.Success(listResult)
+                val httpResult = NewsApi.retrofitService.getNews(queryParams)
+                NewsUiState.Success(httpResult.results)
             } catch (e: IOException) {
+                NewsUiState.Error
+            } catch (e: HttpException) {
                 NewsUiState.Error
             }
         }

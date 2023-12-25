@@ -9,10 +9,8 @@ data class News(
     val articleId: String,
     val title: String,
     val link: String,
-    val description: String,
     val content: String,
     val pubDate: String,
-    val country: ArrayList<String>,
-    val category: ArrayList<String>,
-    val author: String
+    val description: String = "None",
+    val author: String = "Anonymous"
 )
