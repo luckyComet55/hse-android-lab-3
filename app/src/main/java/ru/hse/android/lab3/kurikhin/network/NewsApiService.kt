@@ -15,7 +15,7 @@ private val retrofit = Retrofit.Builder()
 
 interface NewsApiService {
     @GET("/")
-    fun getNews(query: String): ArrayList<News>
+    suspend fun getNews(query: String): ArrayList<News>
 }
 
 object NewsApi {
