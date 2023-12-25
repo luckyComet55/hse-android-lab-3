@@ -13,7 +13,7 @@ import ru.hse.android.lab3.kurikhin.network.NewsApi
 import java.io.IOException
 
 sealed interface NewsUiState {
-    data class Success(val news: ArrayList<News>) : NewsUiState
+    data class Success(val news: List<News>) : NewsUiState
     object Loading : NewsUiState
     object Error : NewsUiState
 }

@@ -68,7 +68,7 @@ fun NewsListItem(
                     modifier = Modifier.weight(1f)
                 )
                 Text(
-                    text = news.pubDate.toString(),
+                    text = news.pubDate,
                     style = MaterialTheme.typography.labelSmall
                 )
             }
